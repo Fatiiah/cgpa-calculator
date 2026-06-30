@@ -1,0 +1,6 @@
+# Semester 1 courses
+Calculus:A:3
+Introduction to Programming:A:3
+Technical Writing:B:2
+Physics:B:3
+General Studies:A:1

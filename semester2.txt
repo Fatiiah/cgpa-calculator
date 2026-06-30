@@ -1,0 +1,6 @@
+# Semester 2 courses
+Data Structures:A:3
+Algorithms:B:3
+Database Systems:A:3
+Linear Algebra:B:2
+Communication Skills:A:1
