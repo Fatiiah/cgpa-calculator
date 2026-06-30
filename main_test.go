@@ -12,17 +12,14 @@ func TestGradeToPoints(t *testing.T) {
 		expected float64
 		valid    bool
 	}{
-		{"A+", 4.0, true},
-		{"A", 4.0, true},
-		{"A-", 3.7, true},
-		{"B+", 3.3, true},
-		{"B", 3.0, true},
-		{"B-", 2.7, true},
-		{"C+", 2.3, true},
-		{"C", 2.0, true},
+		{"A", 5.0, true},
+		{"B", 4.0, true},
+		{"C", 3.0, true},
+		{"D", 2.0, true},
 		{"F", 0.0, true},
+		{"C+", 2.3, false},
 		{"Z", 0.0, false},
-		{"a", 4.0, true}, 
+		{"a", 5.0, true}, 
 	}
 
 	for _, tt := range tests {
@@ -65,15 +62,15 @@ func TestCgpaToClass(t *testing.T) {
 		cgpa     float64
 		expected string
 	}{
-		{4.0, "First Class"},
-		{3.6, "First Class"},
-		{3.5, "Second Class Upper"},
-		{3.0, "Second Class Upper"},
-		{2.5, "Second Class Lower"},
-		{2.0, "Second Class Lower"},
-		{1.5, "Third Class"},
-		{1.0, "Third Class"},
-		{0.5, "Fail"},
+		{5.0, "First Class"},
+		{4.6, "First Class"},
+		{4.49, "Second Class Upper"},
+		{4.0, "Second Class Upper"},
+		{3.49, "Second Class Lower"},
+		{3.0, "Second Class Lower"},
+		{2.49, "Third Class"},
+		{1.0, "Pass"},
+		{0.5, "Pass"},
 	}
 
 	for _, tt := range tests {
@@ -86,11 +83,11 @@ func TestCgpaToClass(t *testing.T) {
 
 // this function tests the parsing of course arguments
 func TestParseCourseArg(t *testing.T) {
-	c, err := parseCourseArg("Mathematics:A+:3")
+	c, err := parseCourseArg("Mathematics:A:3")
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
-	if c.Name != "Mathematics" || c.Grade != "A+" || c.Units != 3 || c.Points != 4.0 {
+	if c.Name != "Mathematics" || c.Grade != "A" || c.Units != 3 || c.Points != 5.0 {
 		t.Errorf("parseCourseArg: unexpected result %+v", c)
 	}
 }
